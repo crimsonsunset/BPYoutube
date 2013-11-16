@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)http://webdesignerwall.com/demo/responsive-design/index.html -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+    <!-- viewport meta to reset iPhone inital scale -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css3-mediaqueries.js for IE8 or older -->
+    <!--[if lt IE 9]>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+
+        body {
+            font: 1em/150% Arial, Helvetica, sans-serif;
+            background-image: url('bg/grey_wash_wall.png');
+            background-repeat: repeat;
+        }
+
+        a {
+            color: #669;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h1, h2 {
+            font: bold 36px/100% Tahoma, Helvetica, Arial, Sans-Serif;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            color: #222;
+            text-shadow: 0px 2px 3px #555;
+        }
+
+        h2 {
+            font: bold 28px/100% Tahoma, Helvetica, Arial, Sans-Serif;
+            color: #999998;
+        }
+
+        /************************************************************************************
+        STRUCTURE
+        *************************************************************************************/
+        #pagewrap {
+            padding: 5px;
+            width: 960px;
+            margin: 20px auto;
+        }
+
+        #header {
+            height: 180px;
+        }
+
+        #content {
+            width: 600px;
+            float: left;
+        }
+
+        #sidebar {
+            width: 300px;
+            float: right;
+        }
+
+        #footer {
+            clear: both;
+        }
+
+        /*#genreSelect {*/
+            /*display:block;*/
+            /*position: absolute;*/
+            /*top:27%;*/
+            /*left:33%;*/
+
+        /*}*/
+
+
+        /************************************************************************************
+        MEDIA QUERIES
+        *************************************************************************************/
+        /* for 980px or less */
+        @media screen and (max-width: 980px) {
+
+            #pagewrap {
+                width: 94%;
+            }
+
+            #content {
+                width: 65%;
+            }
+
+            #sidebar {
+                width: 30%;
+            }
+
+        }
+
+        /* for 700px or less */
+        @media screen and (max-width: 700px) {
+
+            #content {
+                width: auto;
+                float: none;
+            }
+
+            #sidebar {
+                width: auto;
+                float: none;
+            }
+
+        }
+
+        /* for 480px or less */
+        @media screen and (max-width: 480px) {
+
+            #header {
+                height: auto;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            #sidebar {
+                display: none;
+            }
+
+        }
+
+        /* border & guideline (you can ignore these) */
+        #content {
+            background: #f8f8f8;
+        }
+
+        #sidebar {
+            background: #f0efef;
+        }
+
+        #header, #content, #sidebar {
+            margin-bottom: 5px;
+        }
+
+        #pagewrap, #header, #content, #sidebar, #footer {
+            border: solid 1px #ccc;
+        }
+
+    </style>
+    <style type="text/css"></style>
+</head>
+
+<body>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+<script src="jquery.ddslick.min.js"></script>
+<script src="bpyt.js"></script>
+<script>
+
+//    $.getScript("jquery.ddslick.min.js", function () {
+//
+//        console.log("Script loaded and executed.");
+//
+//        bpyt.init()
+//
+//
+//        // Here you can use anything you defined in the loaded script
+//    });
+
+
+</script>
+
+<title>BPYoutube</title>
+
+
+
+
+<div id="pagewrap">
+
+    <div id="header">
+        <h1>Beatport Playlist Generator</h1>
+
+        <h2>Select a Genre: </h2>
+
+        <div id="genreSelect"></div>
+
+        <!--<div id="myDropdown"></div>-->
+
+        <!--<div class="myDropdown" style="width: 260px; background-color: rgb(238, 238, 238); background-position: initial initial; background-repeat: initial initial;"><input class="dd-selected-value" type="hidden"><a class="dd-selected">Select your favorite social network</a><span class="dd-pointer dd-pointer-down"></span></div>-->
+
+
+        <!--<select id="myDropdown">-->
+        <!--</select>-->
+
+
+    </div>
+
+    <div id="content">
+        <h2>Contaaaent</h2>
+
+
+        <p>text</p>
+
+        <p>text</p>
+
+        <p>text</p>
+
+        <p>text</p>
+
+        <p>text</p>
+
+        <p>text</p>
+
+        <p>text</p>
+
+        <p>text</p>
+
+        <p>text</p>
+
+        <p>text</p>
+    </div>
+
+    <div id="sidebar">
+        <h3>Sidebar</h3>
+
+        <p>text</p>
+
+        <p>text</p>
+    </div>
+
+    <div id="footer">
+        <h4>Footer</h4>
+    </div>
+
+</div>
+
+
+</body>
+
+
+</html>
+
