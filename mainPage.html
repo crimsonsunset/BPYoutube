@@ -150,25 +150,31 @@
 
     </style>
     <style type="text/css"></style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="jquery.ddslick.js"></script>
+    <script src="bpyt.js"></script>
+
 </head>
 
 <body>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-
-<script src="jquery.ddslick.min.js"></script>
-<script src="bpyt.js"></script>
 <script>
 
 //    $.getScript("jquery.ddslick.min.js", function () {
 //
 //        console.log("Script loaded and executed.");
-//
+
 //        bpyt.init()
-//
-//
-//        // Here you can use anything you defined in the loaded script
+
+        $('demo-htmlselect').ddslick({
+            onSelected: function(selectedData){
+                //callback function: do something with selectedData;
+            }
+        });
+
+
+        // Here you can use anything you defined in the loaded script
 //    });
 
 
@@ -188,6 +194,19 @@
 
         <div id="genreSelect"></div>
 
+        <select id="demo-htmlselect">
+            <option value="0" data-imagesrc="http://dl.dropbox.com/u/40036711/Images/facebook-icon-32.png"
+                    data-description="Description with Facebook">Facebook</option>
+            <option value="1" data-imagesrc="http://dl.dropbox.com/u/40036711/Images/twitter-icon-32.png"
+                    data-description="Description with Twitter">Twitter</option>
+            <option value="2" selected="selected" data-imagesrc="http://dl.dropbox.com/u/40036711/Images/linkedin-icon-32.png"
+                    data-description="Description with LinkedIn">LinkedIn</option>
+            <option value="3" data-imagesrc="http://dl.dropbox.com/u/40036711/Images/foursquare-icon-32.png"
+                    data-description="Description with Foursquare">Foursquare</option>
+        </select>
+
+
+
         <!--<div id="myDropdown"></div>-->
 
         <!--<div class="myDropdown" style="width: 260px; background-color: rgb(238, 238, 238); background-position: initial initial; background-repeat: initial initial;"><input class="dd-selected-value" type="hidden"><a class="dd-selected">Select your favorite social network</a><span class="dd-pointer dd-pointer-down"></span></div>-->
@@ -201,7 +220,6 @@
 
     <div id="content">
         <h2>Contaaaent</h2>
-
 
         <p>text</p>
 

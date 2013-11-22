@@ -1,12 +1,12 @@
-//$.getScript("jquery.ddslick.min.js", function () {
-//
-//    console.log("Script loaded and executed.");
-//
-//    bpyt.init();
-//
-//
-//    // Here you can use anything you defined in the loaded script
-//});
+$.getScript("jquery.ddslick.js", function () {
+
+    console.log("Script loaded and executed.");
+
+    bpyt.init();
+
+
+    // Here you can use anything you defined in the loaded script
+});
 var lastInput = "";
 var First1 = "";
 var Display1 = "";
@@ -147,42 +147,21 @@ var bpyt = (function () {
         "pop-rock": 39,
         "reggae-dub": 41
     }
-    bpyt.ddData = [
-        {
-            text: "Facebook",
-            value: 1,
-            selected: false,
-            imageSrc: "img/bpicon.png"
-        },
-        {
-            text: "Twitter",
-            value: 2,
-            selected: false,
-            description: "Description with Twitter",
-            imageSrc: "http://dl.dropbox.com/u/40036711/Images/twitter-icon-32.png"
-        },
-        {
-            text: "LinkedIn",
-            value: 3,
-            selected: false,
-            description: "Description with LinkedIn",
-            imageSrc: "http://dl.dropbox.com/u/40036711/Images/linkedin-icon-32.png"
-        },
-        {
-            text: "Foursquare",
-            value: 4,
-            selected: false,
-            description: "Description with Foursquare",
-            imageSrc: "http://dl.dropbox.com/u/40036711/Images/foursquare-icon-32.png"
-        }
-    ];
 
     function init() {
 
         var currGen
+
+        //        genreObj.sort(sort_by('lastName', true, function (a) {
+        //            return a.toUpperCase()
+        //        }));
+
+
         for (var i in genreObj) {
+            var name = capitalizer(i.replace("-","/"));
+
             currGen = {
-                "text": i,
+                "text": name,
                 selected: false,
                 "value": genreObj[i],
                 "imageSrc": defaultImgPath,
@@ -190,7 +169,14 @@ var bpyt = (function () {
             }
             bpyt.genreDD.push(currGen)
         }
-        console.log(JSON.stringify(bpyt.genreDD))
+
+        bpyt.genreDD.sort(sort_by('text', true, function (a) {
+                return a.toUpperCase()
+            }));
+
+
+//        console.log(JSON.stringify(bpyt.genreDD))
+
         $('#genreSelect').ddslick({
             data: bpyt.genreDD,
             width: 300,
@@ -201,6 +187,8 @@ var bpyt = (function () {
                 //                var currInd = item.selectedData.value
                 bpyt.selectedGenre = item.selectedData.text
                 bpyt.selectedIndex = item.selectedData.value
+//                alert(bpyt.selectedIndex)
+
                 bpyt.getBPPL();
             }
         });
@@ -208,50 +196,8 @@ var bpyt = (function () {
 
     }
 
-    //    init();
-    //    calcInitInputs();
-
-    function calcInitInputs() {
-
-        bpyt.mAssetsWeight = bpyt.mAssets / (bpyt.mAssets + bpyt.gAssets);
-        bpyt.gAssetsWeight = 1 - bpyt.mAssetsWeight;
-        bpyt.fundingLevel = (bpyt.mAssets + bpyt.gAssets) / bpyt.econLiab
-
-        console.log(bpyt.rateShock + " :: " + bpyt.econLiabDur + " :: " + bpyt.mAssetsWeight)
-        bpyt.mAssetsDur = Math.max(5, (bpyt.hedgeRatio / 100 * bpyt.econLiabDur / (bpyt.mAssetsWeight)))
-        bpyt.correlations['growth'] = [bpyt.correlations['liab'][2], bpyt.correlations['matching'][2], 1]
-
-        console.log("--------------------calcInitInputs-----------------------")
-        bpyt.outputStr += "--------------------calcInitInputs-----------------------" + "\r\n"
-        console.log("bpyt.mAssetsWeight: " + bpyt.mAssetsWeight)
-        bpyt.outputStr += "bpyt.mAssetsWeight: " + bpyt.mAssetsWeight + "\r\n"
-        console.log("bpyt.gAssetsWeight" + bpyt.gAssetsWeight)
-        bpyt.outputStr += "bpyt.mAssetsWeight: " + bpyt.mAssetsWeight + "\r\n"
-        console.log("bpyt.fundingLevel" + bpyt.fundingLevel)
-        bpyt.outputStr += "bpyt.fundingLevel: " + bpyt.fundingLevel + "\r\n"
-        console.log("bpyt.mAssetsDur: " + bpyt.mAssetsDur)
-        bpyt.outputStr += "bpyt.mAssetsDur: " + bpyt.mAssetsDur + "\r\n"
-        console.log("bpyt.correlations: " + JSON.stringify(bpyt.correlations))
-        bpyt.outputStr += "bpyt.correlations: " + JSON.stringify(bpyt.correlations) + "\r\n"
-        console.log("--------------------END calcInitInputs-----------------------")
-        bpyt.outputStr += "--------------------END calcInitInputs-----------------------" + "\r\n"
-
-
-        //        alert(bpyt.correlations['growth'])
-
-        //        "growth": [bpyt.correlations['liab'][2], bpyt.correlations['matching'][2], 1]
-        //        alert('zzz')
-
-    }
-
     bpyt.init = function () {
         init();
-    }
-    bpyt.waitForAss = function () {
-        init();
-        //        alert('ss')
-//        bpyt.getAssumptions();
-
     }
 
     bpyt.getBPPL = function () {
@@ -263,22 +209,22 @@ var bpyt = (function () {
         });
 
     }
-//    bpyt.sanitizeNSearch = function () {
-//
-//        for (var i = 0; i < bpyt.fullBPList.length; i++) {
-//
-//
-//            $.get("https://gdata.youtube.com/feeds/api/videos?q=cat&orderby=relevance&max-results=10&v=2&alt=json" + bpyt.selectedIndex + "&perPage=10", function (data) {
-//                $(".result").html(data);
-//                console.log(JSON.stringify(data));
-//
-//            });
-//
-//
-//        }
-//
-//
-//    }
+    //    bpyt.sanitizeNSearch = function () {
+    //
+    //        for (var i = 0; i < bpyt.fullBPList.length; i++) {
+    //
+    //
+    //            $.get("https://gdata.youtube.com/feeds/api/videos?q=cat&orderby=relevance&max-results=10&v=2&alt=json" + bpyt.selectedIndex + "&perPage=10", function (data) {
+    //                $(".result").html(data);
+    //                console.log(JSON.stringify(data));
+    //
+    //            });
+    //
+    //
+    //        }
+    //
+    //
+    //    }
 
 
     var s = {
@@ -1444,14 +1390,6 @@ var bpyt = (function () {
     return bpyt;
 }());
 
-//bpyt.waitForAss()
-
-function addDec(nStr) {
-    return nStr / 100;
-    //return nStr
-}
-
-
 //1 = drum and bass
 ////2 = Hardcore/Hard Techno
 //3 = Electronica
@@ -1504,36 +1442,48 @@ var genreObj = {
 }
 
 
-//Dropdown plugin data
-var ddData = [
-    {
-        text: "Facebook",
-        value: 1,
-        selected: false,
-        imageSrc: "img/bpicon.png"
-    },
-    {
-        text: "Twitter",
-        value: 2,
-        selected: false,
-        description: "Description with Twitter",
-        imageSrc: "http://dl.dropbox.com/u/40036711/Images/twitter-icon-32.png"
-    },
-    {
-        text: "LinkedIn",
-        value: 3,
-        selected: false,
-        description: "Description with LinkedIn",
-        imageSrc: "http://dl.dropbox.com/u/40036711/Images/linkedin-icon-32.png"
-    },
-    {
-        text: "Foursquare",
-        value: 4,
-        selected: false,
-        description: "Description with Foursquare",
-        imageSrc: "http://dl.dropbox.com/u/40036711/Images/foursquare-icon-32.png"
+var sort_by = function (field, reverse, primer) {
+    var key = function (x) {
+        return primer ? primer(x[field]) : x[field]
+    };
+    return function (a, b) {
+        var A = key(a), B = key(b);
+        //alert(A + " , " + B)
+        return ((A < B) ? -1 :
+            (A > B) ? +1 : 0) * [-1, 1][+!!reverse];
     }
-];
+};
+
+////Dropdown plugin data
+//var ddData = [
+//    {
+//        text: "Facebook",
+//        value: 1,
+//        selected: false,
+//        imageSrc: "img/bpicon.png"
+//    },
+//    {
+//        text: "Twitter",
+//        value: 2,
+//        selected: false,
+//        description: "Description with Twitter",
+//        imageSrc: "http://dl.dropbox.com/u/40036711/Images/twitter-icon-32.png"
+//    },
+//    {
+//        text: "LinkedIn",
+//        value: 3,
+//        selected: false,
+//        description: "Description with LinkedIn",
+//        imageSrc: "http://dl.dropbox.com/u/40036711/Images/linkedin-icon-32.png"
+//    },
+//    {
+//        text: "Foursquare",
+//        value: 4,
+//        selected: false,
+//        description: "Description with Foursquare",
+//        imageSrc: "http://dl.dropbox.com/u/40036711/Images/foursquare-icon-32.png"
+//    }
+//];
 
 //http://api.beatport.com/catalog/most-popular/genre?id=38&perPage=10
 //https://gdata.youtube.com/feeds/api/videos?q=football+-soccer&orderby=published&start-index=11&max-results=10&v=2&alt=json
@@ -4196,11 +4146,11 @@ var d = {
 }
 
 function capitalizer(str) {
-    str = str.toLowerCase().replace(/\b[a-z](?=[a-z]{2})/g, function (letter) {
+    str = str.toLowerCase().replace(/\b[a-z](?=[a-z]{0})/g, function (letter) {
         return letter.toUpperCase();
     });
     return str
 
 }
 
-bpyt.init();
+//bpyt.init();
